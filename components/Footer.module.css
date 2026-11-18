@@ -1,0 +1,208 @@
+.footer {
+  background: var(--bg);
+  padding: 0 10px;
+  position: relative;
+}
+
+.card {
+  background: var(--navy);
+  border-radius: 20px;
+  padding: 40px 40px 36px;
+  position: relative;
+  z-index: 2;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 60px;
+  align-items: start;
+  margin-bottom: 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+.logoImg {
+  height: 38px;
+  width: auto;
+}
+.tagline {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 15px;
+  margin-top: 4px;
+}
+
+.navLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+.navLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  list-style: none;
+}
+.navLinks a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+.navLinks a:hover {
+  color: white;
+}
+
+.bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.socialRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.social {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.socialLabel {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 15px;
+  font-weight: 500;
+  margin-right: 6px;
+}
+.socialBtn {
+  width: 44px;
+  height: 44px;
+  background: var(--lime);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.socialBtn:hover {
+  opacity: 0.85;
+}
+.socialBtn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.emailForm {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 100px;
+  padding: 4px 4px 4px 20px;
+  gap: 8px;
+}
+.emailInput {
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 15px;
+  font-family: var(--font-body);
+  width: 180px;
+}
+.emailInput::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+.joinButton {
+  background: var(--blue);
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.joinButton:hover {
+  opacity: 0.85;
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 13px;
+  margin-top: 20px;
+  text-align: right;
+}
+
+.watermark {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 400px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.06);
+  text-align: center;
+  line-height: 1;
+  margin-top: -100px;
+  margin-bottom: -50px;
+  pointer-events: none;
+  user-select: none;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1100px) {
+  .footer {
+    padding: 0 60px;
+  }
+  .top {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 0 16px;
+  }
+  .card {
+    padding: 32px 24px 28px;
+  }
+  .top {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .copyright {
+    text-align: left;
+    margin-top: 8px;
+  }
+  .emailForm {
+    width: 100%;
+  }
+  .emailInput {
+    flex: 1;
+    min-width: 0;
+  }
+  .watermark {
+    font-size: 18vw;
+    margin-top: -20px;
+  }
+}

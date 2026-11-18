@@ -1,0 +1,135 @@
+.section {
+  padding: 10px;
+  background: var(--bg);
+}
+
+.card {
+  background: var(--blue) url("/waitlist-background.png") center / cover;
+  border-radius: 24px;
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 630px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  width: 100%;
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 80px;
+  text-transform: uppercase;
+  line-height: 0.95;
+  color: white;
+  margin-bottom: 32px;
+}
+
+.sub {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  line-height: 1.4;
+  max-width: 482px;
+  margin: 0 auto 48px;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 100px;
+  padding: 6px 6px 6px 24px;
+  width: 663px;
+  max-width: 100%;
+  margin: 0 auto;
+  gap: 8px;
+}
+
+.input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 18px;
+  font-family: var(--font-body);
+  min-width: 0;
+}
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.button {
+  background: white;
+  color: var(--blue);
+  border: none;
+  height: 56px;
+  padding: 0 24px;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--font-body);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+.button:hover {
+  opacity: 0.9;
+}
+.button svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.25s ease;
+}
+.button:hover svg {
+  transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 6px;
+  }
+  .card {
+    padding: 50px 20px;
+    min-height: auto;
+  }
+  .headline {
+    font-size: clamp(24px, 7vw, 54px);
+  }
+  .sub {
+    font-size: 15px;
+  }
+  .form {
+    width: 100%;
+    flex-direction: column;
+    border-radius: 16px;
+    padding: 16px;
+    gap: 12px;
+  }
+  .input {
+    font-size: 16px;
+    width: 100%;
+  }
+  .button {
+    width: 100%;
+    justify-content: center;
+    height: 52px;
+  }
+}

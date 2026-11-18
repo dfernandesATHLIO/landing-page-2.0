@@ -1,0 +1,3003 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Athlio – Get Discovered, Not Just Seen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,700;1,800&family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ===========================
+       RESET & BASE
+       =========================== */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --blue: #4051fd;
+        --navy: #0c0f31;
+        --lime: #a8ff00;
+        --white: #fff;
+        --gray-text: #cecfd4;
+        --bg: #fafafa;
+        --muted: #72717a;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Barlow", sans-serif;
+        background: var(--bg);
+        color: #111;
+        overflow-x: hidden;
+      }
+
+      /* ===========================
+       NAVBAR
+       =========================== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding: 34px 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+      }
+      .nav-logo-mark {
+        width: 28px;
+        height: 28px;
+        background: var(--blue);
+        border-radius: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 800;
+        font-size: 13px;
+        letter-spacing: -1px;
+      }
+      .nav-logo-text {
+        color: white;
+        font-size: 21px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 38px;
+        list-style: none;
+      }
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        opacity: 0.9;
+        position: relative;
+        transition: opacity 0.2s;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 1.5px;
+        background: currentColor;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s ease;
+      }
+      .nav-links a:hover {
+        opacity: 1;
+      }
+      .nav-links a:hover::after {
+        transform: scaleX(1);
+      }
+
+      .nav-actions {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .btn-primary {
+        background: var(--blue);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        height: 44px;
+        border-radius: 100px;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: "Barlow", sans-serif;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        transition: opacity 0.2s;
+      }
+      .btn-primary:hover {
+        opacity: 0.85;
+      }
+
+      .btn-ghost {
+        background: none;
+        color: white;
+        border: none;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: "Barlow", sans-serif;
+        cursor: pointer;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        padding: 10px 16px;
+        height: 44px;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      /* ===========================
+       HERO
+       =========================== */
+      #hero {
+        position: relative;
+        padding: 10px;
+        min-height: 100vh;
+      }
+
+      .hero-card {
+        position: relative;
+        min-height: calc(100vh - 20px);
+        border-radius: 24px;
+        overflow: hidden;
+      }
+
+      /* Real hero background image */
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+      .hero-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+      }
+      .hero-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 4;
+        padding: 0 130px;
+      }
+
+      .hero-headline {
+        font-family: "Barlow Condensed", sans-serif;
+        font-style: italic;
+        font-weight: 700;
+        font-size: 120px;
+        line-height: 0.93;
+        text-transform: uppercase;
+        padding-top: 180px;
+        max-width: 865px;
+        background: linear-gradient(170deg, #fff 55%, #c8d0ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-desc {
+        margin-top: 26px;
+        color: var(--gray-text);
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.35;
+        max-width: 570px;
+      }
+
+      .hero-form-wrap {
+        margin-top: 47px;
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid var(--muted);
+        border-radius: 100px;
+        padding: 6px 6px 6px 24px;
+        width: 663px;
+        gap: 8px;
+      }
+      .hero-form-wrap input {
+        flex: 1;
+        background: none;
+        border: none;
+        outline: none;
+        color: white;
+        font-size: 18px;
+        font-family: "Barlow", sans-serif;
+        font-weight: 400;
+        min-width: 0;
+      }
+      .hero-form-wrap input::placeholder {
+        color: rgba(255, 255, 255, 0.55);
+      }
+      .hero-form-wrap .btn-waitlist {
+        background: var(--blue);
+        color: white;
+        border: none;
+        height: 56px;
+        padding: 0 20px;
+        border-radius: 100px;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: "Barlow", sans-serif;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: opacity 0.2s;
+      }
+      .hero-form-wrap .btn-waitlist:hover {
+        opacity: 0.85;
+      }
+      .btn-waitlist svg,
+      .btn-waitlist-white svg {
+        width: 20px;
+        height: 20px;
+        transition: transform 0.25s ease;
+      }
+      .btn-waitlist:hover svg,
+      .btn-waitlist-white:hover svg {
+        transform: translateX(5px);
+      }
+
+      .hero-trust {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        white-space: nowrap;
+        z-index: 4;
+      }
+      .hero-trust span {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 14px;
+      }
+      .hero-trust .dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      /* Success message */
+      .form-msg {
+        margin-top: 12px;
+        font-size: 14px;
+        font-weight: 500;
+        display: none;
+        padding-left: 12px;
+      }
+      .form-msg.success {
+        color: var(--lime);
+        display: block;
+      }
+      .form-msg.error {
+        color: #ff6b6b;
+        display: block;
+      }
+
+      /* ===========================
+       SOCIAL PROOF
+       =========================== */
+      #social-proof {
+        background: var(--bg);
+        padding: 60px 140px;
+      }
+
+      .stats-row {
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .stat-item {
+        flex: 1;
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 64px;
+        font-weight: 700;
+        font-style: italic;
+        line-height: 1;
+        color: #111;
+        margin-bottom: 17px;
+      }
+      .stat-number .accent {
+        color: var(--blue);
+      }
+
+      .stat-label {
+        font-size: 16px;
+        color: #666;
+        font-weight: 400;
+        line-height: 1.3;
+      }
+
+      .stat-divider {
+        width: 1px;
+        height: 68px;
+        background: #ddd;
+        flex-shrink: 0;
+        margin: 10px 60px;
+      }
+
+      /* ===========================
+       WHO IS ATHLIO
+       =========================== */
+      .wia-section {
+        background: var(--bg);
+        padding: 20px 1.5% 100px;
+      }
+
+      .wia-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        align-items: center;
+        gap: clamp(56px, 8vw, 130px);
+        max-width: 1600px;
+        margin: 0 auto;
+      }
+
+      .wia-headline {
+        margin-bottom: 20px;
+        color: #111;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: clamp(52px, 5.2vw, 76px);
+        font-style: italic;
+        font-weight: 800;
+        line-height: 0.98;
+        text-transform: uppercase;
+      }
+
+      .wia-desc {
+        max-width: 620px;
+        margin-bottom: 32px;
+        color: #555;
+        font-size: 17px;
+        line-height: 1.6;
+      }
+
+      .wia-cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .wia-card {
+        min-height: clamp(220px, 22.8vw, 360px);
+        padding: clamp(20px, 1.5vw, 24px);
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .wia-card-lime {
+        background: #c9f58f;
+        color: #111;
+      }
+
+      .wia-card-navy {
+        background: var(--navy);
+        color: white;
+      }
+
+      .wia-card-blue {
+        background: var(--blue);
+        color: white;
+      }
+
+      .wia-card-title {
+        max-width: 280px;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: clamp(20px, 1.8vw, 28px);
+        font-style: italic;
+        font-weight: 800;
+        line-height: 1.15;
+        text-transform: uppercase;
+      }
+
+      .wia-card-desc {
+        max-width: 320px;
+        font-size: clamp(15px, 1.15vw, 18px);
+        font-weight: 500;
+        line-height: 1.28;
+      }
+
+      .wia-right {
+        position: relative;
+        min-height: 460px;
+        aspect-ratio: 0.87;
+        overflow: hidden;
+        border-radius: 24px;
+        background: var(--navy);
+      }
+
+      @media (max-width: 900px) {
+        .wia-layout {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .wia-right {
+          min-height: 0;
+          max-height: 420px;
+          aspect-ratio: 16 / 10;
+        }
+      }
+
+      .wia-photo {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      /* ===========================
+       SNEAK PEAK — STICKY SCROLL
+       =========================== */
+      #the-app {
+        background: var(--bg);
+        padding-top: 80px;
+      }
+
+      .sneak-title {
+        text-align: center;
+        font-family: "Barlow Condensed", sans-serif;
+        font-style: italic;
+        font-weight: 800;
+        font-size: 72px;
+        text-transform: uppercase;
+        line-height: 1.05;
+        color: #111;
+        padding-bottom: 60px;
+      }
+      .sneak-title .accent {
+        color: var(--blue);
+      }
+
+      /* Scroll animation wrapper */
+      .scroll-scene {
+        position: relative;
+        height: 300vh; /* 3 panels */
+      }
+
+      .sticky-row {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 300px 1fr;
+        align-items: center;
+        gap: 40px;
+        padding: 40px 88px 0;
+        overflow: hidden;
+      }
+
+      /* Left panel */
+      .slide-left {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .slide-num {
+        font-family: "Barlow Condensed", sans-serif;
+        font-style: italic;
+        font-weight: 800;
+        font-size: 160px;
+        line-height: 1;
+        color: rgba(0, 0, 0, 0.07);
+        margin-bottom: -40px;
+      }
+
+      .slide-title {
+        font-family: "Barlow Condensed", sans-serif;
+        font-style: italic;
+        font-weight: 800;
+        font-size: 32px;
+        text-transform: uppercase;
+        color: #111;
+        margin-bottom: 12px;
+      }
+
+      .slide-desc {
+        font-size: 16px;
+        font-weight: 400;
+        color: #555;
+        line-height: 1.55;
+        max-width: 360px;
+        margin-bottom: 20px;
+      }
+
+      .badges {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .badge {
+        display: inline-flex;
+        padding: 4px 8px;
+        justify-content: center;
+        align-items: center;
+        gap: 2px;
+        border-radius: 9999px;
+        background: #dbe9ff;
+        color: #1f2cb4;
+        text-align: center;
+        font-family: "Barlow", sans-serif;
+        font-size: 14px;
+        font-style: italic;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: -0.14px;
+        text-transform: uppercase;
+      }
+
+      /* Phone frame */
+      .phone-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .phone-frame {
+        width: 320px;
+        height: auto;
+        aspect-ratio: 1871 / 3866;
+        background: transparent;
+        position: relative;
+      }
+
+      .phone-screen {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        overflow: visible;
+        position: relative;
+      }
+
+      /* Status bar */
+      .phone-status {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 44px;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 16px 0;
+        font-size: 11px;
+        font-weight: 600;
+        color: #111;
+        z-index: 10;
+      }
+      .phone-notch {
+        width: 90px;
+        height: 24px;
+        background: var(--blue);
+        border-radius: 0 0 14px 14px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .phone-status-icons {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+      }
+      .status-bar-icon {
+        width: 14px;
+        height: 8px;
+        background: #111;
+        border-radius: 2px;
+        opacity: 0.8;
+      }
+
+      /* Screen content panels */
+      .screen-content {
+        position: absolute;
+        inset: 0;
+      }
+      .screen-content img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        display: block;
+      }
+      .screen-content.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Right panel */
+      .slide-right {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .stat-card {
+        background: white;
+        border: 1px solid #ebebeb;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      }
+      .stat-card-label {
+        font-size: 14px;
+        color: #111;
+        font-weight: 500;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+      }
+      .stat-card-number {
+        font-size: 64px;
+        font-weight: 700;
+        font-style: italic;
+        line-height: 1;
+        color: #111;
+        margin: 4px 0;
+      }
+      .stat-card-number .accent {
+        color: var(--blue);
+      }
+      .stat-card-sub {
+        font-size: 14px;
+        color: #999;
+        margin-top: 6px;
+        line-height: 1.3;
+      }
+
+      /* Slide transition */
+      .slide-left,
+      .slide-right,
+      .screen-content {
+        transition:
+          opacity 0.35s ease,
+          transform 0.35s ease;
+      }
+      .fade-out {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      .fade-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Progress dots */
+      .slide-dots {
+        position: absolute;
+        right: 40px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 10;
+      }
+      .slide-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #ddd;
+        transition:
+          background 0.3s,
+          height 0.3s;
+        cursor: pointer;
+      }
+      .slide-dot.active {
+        background: var(--blue);
+        height: 20px;
+        border-radius: 3px;
+      }
+
+      /* ===========================
+       WAITLIST CTA
+       =========================== */
+      #why-join {
+        padding: 10px;
+        background: var(--bg);
+      }
+
+      .cta-card {
+        background: var(--blue);
+        background-image: url("waitlist%20background.png");
+        background-size: cover;
+        background-position: center;
+        border-radius: 24px;
+        padding: 60px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        min-height: 630px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cta-inner {
+        position: relative;
+        z-index: 2;
+        max-width: 1100px;
+        width: 100%;
+      }
+
+      .cta-headline {
+        font-family: "Barlow Condensed", sans-serif;
+        font-style: italic;
+        font-weight: 700;
+        font-size: 80px;
+        text-transform: uppercase;
+        line-height: 0.95;
+        color: white;
+        margin-bottom: 32px;
+      }
+
+      .cta-sub {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 400;
+        line-height: 1.4;
+        max-width: 482px;
+        margin: 0 auto 48px;
+      }
+
+      .cta-form-wrap {
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 100px;
+        padding: 6px 6px 6px 24px;
+        width: 663px;
+        margin: 0 auto;
+        gap: 8px;
+      }
+      .cta-form-wrap input {
+        flex: 1;
+        background: none;
+        border: none;
+        outline: none;
+        color: white;
+        font-size: 18px;
+        font-family: "Barlow", sans-serif;
+        min-width: 0;
+      }
+      .cta-form-wrap input::placeholder {
+        color: rgba(255, 255, 255, 0.55);
+      }
+      .cta-form-wrap .btn-waitlist-white {
+        background: white;
+        color: var(--blue);
+        border: none;
+        height: 56px;
+        padding: 0 24px;
+        border-radius: 100px;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: "Barlow", sans-serif;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: opacity 0.2s;
+      }
+      .cta-form-wrap .btn-waitlist-white:hover {
+        opacity: 0.9;
+      }
+      .cta-form-msg {
+        margin-top: 14px;
+        font-size: 14px;
+        font-weight: 500;
+        display: none;
+      }
+      .cta-form-msg.success {
+        color: var(--lime);
+        display: block;
+      }
+      .cta-form-msg.error {
+        color: #ffaaaa;
+        display: block;
+      }
+
+      /* ===========================
+       FAQ
+       =========================== */
+      #faq {
+        background: var(--bg);
+        padding: 80px 140px;
+        margin-bottom: -1px;
+      }
+
+      .faq-layout {
+        display: grid;
+        grid-template-columns: 358px 1fr;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .faq-card {
+        background: #d3f89b;
+        border-radius: 20px;
+        padding: 32px;
+        min-height: 236px;
+      }
+      .faq-tag {
+        font-size: 13px;
+        font-weight: 600;
+        color: rgba(0, 0, 0, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 16px;
+      }
+      .faq-card-title {
+        font-family: "Barlow Condensed", sans-serif;
+        font-style: italic;
+        font-weight: 800;
+        font-size: 52px;
+        text-transform: uppercase;
+        line-height: 1;
+        color: #111;
+        margin-bottom: 20px;
+      }
+      .faq-contact {
+        font-size: 13px;
+        color: rgba(0, 0, 0, 0.55);
+        line-height: 1.5;
+      }
+      .faq-contact a {
+        color: #111;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .faq-list-wrap {
+        background: white;
+        border-radius: 20px;
+        padding: 16px;
+        min-height: 501px;
+      }
+
+      .faq-item {
+        border-bottom: 1px solid #eee;
+        overflow: hidden;
+      }
+      .faq-item:last-child {
+        border-bottom: none;
+      }
+
+      .faq-question {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        color: #111;
+        gap: 16px;
+        user-select: none;
+      }
+      .faq-question:hover {
+        color: var(--blue);
+      }
+
+      .faq-toggle {
+        width: 36px;
+        height: 36px;
+        background: #f5f5f5;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition:
+          background 0.2s,
+          transform 0.3s;
+        font-size: 20px;
+        color: #333;
+      }
+      .faq-item.open .faq-toggle {
+        background: var(--blue);
+        color: white;
+        transform: rotate(45deg);
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.35s ease,
+          padding 0.35s ease;
+        font-size: 15px;
+        color: #555;
+        line-height: 1.6;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+      .faq-item.open .faq-answer {
+        max-height: 300px;
+        padding-bottom: 16px;
+      }
+
+      /* ===========================
+       FOOTER
+       =========================== */
+      footer {
+        background: var(--bg);
+        padding: 0 10px 0;
+        position: relative;
+      }
+
+      .footer-card {
+        background: var(--navy);
+        border-radius: 20px;
+        padding: 40px 40px 36px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .footer-top {
+        display: grid;
+        grid-template-columns: 1fr auto auto auto;
+        gap: 60px;
+        align-items: start;
+        margin-bottom: 40px;
+      }
+
+      .footer-brand {
+      }
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        margin-bottom: 10px;
+      }
+      .footer-logo-mark {
+        width: 36px;
+        height: 36px;
+        background: var(--blue);
+        border-radius: 9px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 800;
+        font-size: 15px;
+      }
+      .footer-logo-text {
+        color: white;
+        font-size: 22px;
+        font-weight: 700;
+      }
+      .footer-tagline {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 15px;
+        margin-top: 4px;
+      }
+
+      .footer-nav-group {
+      }
+      .footer-nav-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 16px;
+      }
+      .footer-nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        list-style: none;
+      }
+      .footer-nav-links a {
+        color: rgba(255, 255, 255, 0.75);
+        text-decoration: none;
+        font-size: 15px;
+        transition: color 0.2s;
+      }
+      .footer-nav-links a:hover {
+        color: white;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .footer-social-label {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 15px;
+        font-weight: 500;
+        margin-right: 6px;
+      }
+      .social-btn {
+        width: 44px;
+        height: 44px;
+        background: var(--lime);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: opacity 0.2s;
+      }
+      .social-btn:hover {
+        opacity: 0.85;
+      }
+      .social-btn svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .footer-email-form {
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 100px;
+        padding: 4px 4px 4px 20px;
+        gap: 8px;
+      }
+      .footer-email-form input {
+        background: none;
+        border: none;
+        outline: none;
+        color: white;
+        font-size: 15px;
+        font-family: "Barlow", sans-serif;
+        width: 180px;
+      }
+      .footer-email-form input::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .footer-email-form .btn-join {
+        background: var(--blue);
+        color: white;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 100px;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: "Barlow", sans-serif;
+        cursor: pointer;
+        transition: opacity 0.2s;
+      }
+      .footer-email-form .btn-join:hover {
+        opacity: 0.85;
+      }
+
+      .footer-copyright {
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 13px;
+        margin-top: 20px;
+        text-align: right;
+      }
+
+      /* Big ATHLIO watermark */
+      .footer-watermark {
+        font-family: "Barlow Condensed", sans-serif;
+        font-style: italic;
+        font-weight: 800;
+        font-size: 400px;
+        text-transform: uppercase;
+        color: rgba(0, 0, 0, 0.06);
+        text-align: center;
+        line-height: 1;
+        margin-top: -100px;
+        margin-bottom: -50px;
+        pointer-events: none;
+        user-select: none;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ===========================
+       ANIMATIONS
+       =========================== */
+
+      /* Keyframes */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes scaleUp {
+        from {
+          opacity: 0;
+          transform: scale(0.92);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      @keyframes phoneFloat {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-12px);
+        }
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: -200% center;
+        }
+        100% {
+          background-position: 200% center;
+        }
+      }
+
+      /* Hero entrance — staggered */
+      .hero-headline {
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+      }
+      .hero-desc {
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+      }
+      .hero-form-wrap {
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+      }
+      .hero-trust {
+        animation: fadeIn 1s ease 0.8s both;
+      }
+      .navbar {
+        animation: fadeIn 0.6s ease 0s both;
+      }
+
+      .navbar {
+        transition:
+          color 0.3s,
+          background 0.3s,
+          border-radius 0.3s,
+          padding 0.3s,
+          top 0.3s,
+          left 0.3s,
+          right 0.3s,
+          transform 0.28s ease;
+      }
+
+      .navbar.nav-hidden {
+        transform: translateY(calc(-100% - 24px));
+      }
+
+      .navbar.scrolled {
+        top: 12px;
+        left: 20px;
+        right: 20px;
+        border-radius: 9999px;
+        padding: 12px 32px;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+      .navbar.scrolled.light-bg {
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      /* Light background sections → dark text */
+      .navbar.light-bg .nav-links a,
+      .navbar.light-bg .btn-ghost {
+        color: #111;
+      }
+      .navbar.light-bg .nav-hamburger span {
+        background: #111;
+      }
+      .nav-logo .logo-black {
+        display: none;
+      }
+      .navbar.light-bg .logo-white {
+        display: none;
+      }
+      .navbar.light-bg .logo-black {
+        display: block;
+      }
+
+      /* Scroll-triggered elements */
+      .reveal {
+        opacity: 0;
+        transform: translateY(36px);
+        transition:
+          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-left {
+        opacity: 0;
+        transform: translateX(-40px);
+        transition:
+          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .reveal-right {
+        opacity: 0;
+        transform: translateX(40px);
+        transition:
+          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .reveal-scale {
+        opacity: 0;
+        transform: scale(0.94);
+        transition:
+          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal-scale.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Stagger delays */
+      .reveal-d1 {
+        transition-delay: 0.1s;
+      }
+      .reveal-d2 {
+        transition-delay: 0.2s;
+      }
+      .reveal-d3 {
+        transition-delay: 0.3s;
+      }
+      .reveal-d4 {
+        transition-delay: 0.4s;
+      }
+
+      /* Phone screen image transition — upgrade from simple opacity */
+      .screen-content {
+        position: absolute;
+        inset: 0;
+        transition:
+          opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+          transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .screen-content.hidden {
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(1.02);
+      }
+
+      /* Stat card hover lift */
+      .stat-card {
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+      .stat-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      /* FAQ item hover */
+      .faq-question {
+        transition: color 0.2s;
+      }
+
+      /* ===========================
+       RESPONSIVE
+       =========================== */
+
+      /* Hide hamburger + mobile overlay on desktop */
+      .nav-hamburger {
+        display: none;
+      }
+      .mobile-menu {
+        display: none;
+      }
+      .mobile-slides {
+        display: none !important;
+      }
+
+      /* Tablet */
+      @media (max-width: 1100px) {
+        .navbar {
+          padding: 24px 32px;
+        }
+        #hero {
+          padding: 8px;
+        }
+        .hero-content {
+          padding: 0 32px;
+        }
+        .hero-headline {
+          font-size: 90px;
+          padding-top: 180px;
+        }
+        .hero-form-wrap {
+          width: 100%;
+          max-width: 560px;
+        }
+        .hero-player {
+          right: 60px;
+          width: 300px;
+        }
+        #social-proof {
+          padding: 50px 60px;
+        }
+        .wia-section {
+          padding: 20px 60px 80px;
+        }
+        .wia-layout {
+          gap: 32px;
+        }
+        .wia-right {
+          min-height: 400px;
+        }
+        .wia-cards {
+          gap: 8px;
+          margin-top: 20px;
+        }
+        .wia-card {
+          min-height: clamp(240px, 28vw, 320px);
+          padding: 20px;
+          border-radius: 18px;
+        }
+        .sticky-row {
+          padding: 0 40px;
+          grid-template-columns: 1fr 260px 1fr;
+        }
+        .slide-num {
+          font-size: 120px;
+        }
+        .phone-frame {
+          width: 240px;
+          height: auto;
+        }
+        #faq {
+          padding: 60px 60px;
+        }
+        footer {
+          padding: 0 60px 0;
+        }
+        .footer-top {
+          gap: 40px;
+        }
+      }
+
+      /* Mobile */
+      @media (max-width: 768px) {
+        /* --- NAV --- */
+        .navbar {
+          padding: 20px 20px;
+          position: fixed;
+          background: rgba(10, 14, 26, 0.85);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          z-index: 200;
+        }
+        .nav-links {
+          display: none;
+        }
+        .nav-actions {
+          display: none;
+        }
+        .nav-hamburger {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          cursor: pointer;
+          padding: 4px;
+        }
+        .nav-hamburger span {
+          display: block;
+          width: 24px;
+          height: 2px;
+          background: white;
+          border-radius: 2px;
+          transition: all 0.3s;
+        }
+
+        /* Mobile menu overlay */
+        .mobile-menu {
+          display: none;
+          position: fixed;
+          inset: 0;
+          background: var(--navy);
+          z-index: 199;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 32px;
+        }
+        .mobile-menu.open {
+          display: flex;
+        }
+        .mobile-menu a {
+          color: white;
+          text-decoration: none;
+          font-size: 28px;
+          font-weight: 700;
+          font-family: "Barlow", sans-serif;
+        }
+        .mobile-menu .mobile-cta {
+          margin-top: 16px;
+          background: var(--blue);
+          color: white;
+          border: none;
+          padding: 14px 32px;
+          border-radius: 100px;
+          font-size: 18px;
+          font-weight: 700;
+          font-family: "Barlow", sans-serif;
+          cursor: pointer;
+          text-decoration: none;
+        }
+        .mobile-menu-close {
+          position: absolute;
+          top: 24px;
+          right: 24px;
+          background: none;
+          border: none;
+          color: white;
+          font-size: 32px;
+          cursor: pointer;
+          line-height: 1;
+        }
+
+        /* --- HERO --- */
+        #hero {
+          padding: 6px;
+          padding-top: 70px;
+          min-height: auto;
+        }
+        .hero-card {
+          min-height: auto;
+          border-radius: 18px;
+          padding-bottom: 80px;
+        }
+        .hero-player {
+          display: none;
+        }
+        .hero-content {
+          padding: 0 24px;
+        }
+        .hero-headline {
+          font-size: 56px;
+          padding-top: 60px;
+          max-width: 100%;
+          line-height: 0.9;
+        }
+        .hero-desc {
+          font-size: 15px;
+          max-width: 100%;
+          margin-top: 20px;
+        }
+        .hero-form-wrap {
+          width: 100%;
+          flex-direction: column;
+          border-radius: 16px;
+          padding: 16px;
+          gap: 12px;
+          margin-top: 28px;
+        }
+        .hero-form-wrap input {
+          font-size: 16px;
+          width: 100%;
+        }
+        .hero-form-wrap .btn-waitlist {
+          width: 100%;
+          justify-content: center;
+          height: 52px;
+          font-size: 16px;
+        }
+        .hero-trust {
+          position: relative;
+          bottom: auto;
+          left: auto;
+          transform: none;
+          justify-content: center;
+          margin-top: 20px;
+          flex-wrap: wrap;
+          padding: 0 24px;
+        }
+
+        /* --- SOCIAL PROOF --- */
+        #social-proof {
+          padding: 40px 24px;
+        }
+        .stats-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 32px 16px;
+        }
+        .stat-divider {
+          display: none;
+        }
+        .stat-number {
+          font-size: 44px;
+          margin-bottom: 8px;
+        }
+        .stat-label {
+          font-size: 13px;
+        }
+
+        /* --- WHO IS ATHLIO --- */
+        .wia-section {
+          padding: 88px 24px 64px;
+        }
+        .wia-layout {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .wia-headline {
+          font-size: clamp(42px, 12vw, 54px);
+        }
+        .wia-desc {
+          margin-bottom: 24px;
+          font-size: 15px;
+        }
+        .wia-cards {
+          grid-template-columns: 1fr;
+          gap: 10px;
+          margin-top: 20px;
+        }
+        .wia-card {
+          min-height: 200px;
+          padding: 20px;
+          border-radius: 16px;
+        }
+        .wia-card-title {
+          font-size: 24px;
+        }
+        .wia-card-desc {
+          font-size: 17px;
+        }
+        .wia-right {
+          min-height: 0;
+          max-height: 420px;
+          aspect-ratio: 16 / 10;
+          border-radius: 18px;
+        }
+
+        /* --- SNEAK PEAK --- */
+        #the-app {
+          padding-top: 50px;
+        }
+        .sneak-title {
+          font-size: 44px;
+          padding-bottom: 40px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+
+        /* Replace sticky scroll with simple stacked slides on mobile */
+        .scroll-scene {
+          height: auto;
+        }
+        .sticky-row {
+          position: relative;
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0;
+          padding: 0 24px 60px;
+          overflow: visible;
+        }
+        .slide-left {
+          order: 2;
+          text-align: left;
+          padding-top: 24px;
+          width: 100%;
+        }
+        .phone-wrapper {
+          order: 1;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+        .slide-right {
+          order: 3;
+          width: 100%;
+        }
+        .slide-dots {
+          display: none;
+        }
+        .slide-num {
+          font-size: 90px;
+          margin-bottom: -12px;
+        }
+        .slide-title {
+          font-size: 26px;
+        }
+        .slide-desc {
+          font-size: 14px;
+          max-width: 100%;
+        }
+        .phone-frame {
+          width: 220px;
+          height: auto;
+        }
+
+        /* On mobile show all 3 slides stacked */
+        .mobile-slides {
+          display: block !important;
+        }
+        #scroll-scene {
+          display: none;
+        }
+
+        .mobile-slide {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 0 24px 56px;
+          gap: 0;
+          border-bottom: 1px solid #f0f0f0;
+          margin-bottom: 56px;
+        }
+        .mobile-slide:last-child {
+          border-bottom: none;
+          margin-bottom: 0;
+        }
+        .mobile-slide .slide-num {
+          font-size: 90px;
+          margin-bottom: -12px;
+          color: rgba(0, 0, 0, 0.07);
+          font-family: "Barlow Condensed", sans-serif;
+          font-style: italic;
+          font-weight: 800;
+        }
+        .mobile-slide .slide-title {
+          font-family: "Barlow Condensed", sans-serif;
+          font-style: italic;
+          font-weight: 800;
+          font-size: 26px;
+          text-transform: uppercase;
+          color: #111;
+          margin-bottom: 10px;
+        }
+        .mobile-slide .slide-desc {
+          font-size: 14px;
+          color: #555;
+          line-height: 1.55;
+          margin-bottom: 16px;
+        }
+        .mobile-slide .badges {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+          margin-bottom: 28px;
+        }
+        .mobile-slide .phone-wrapper {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 24px;
+        }
+        .mobile-slide .phone-frame {
+          width: 220px;
+          height: auto;
+          aspect-ratio: 1871 / 3866;
+          background: transparent;
+          border-radius: 0;
+          padding: 0;
+          box-shadow: none;
+        }
+        .mobile-slide .phone-screen {
+          width: 100%;
+          height: 100%;
+          background: transparent;
+          border-radius: 0;
+          overflow: visible;
+          position: relative;
+        }
+        .mobile-slide .stat-card {
+          border: 1px solid #ebebeb;
+          border-radius: 16px;
+          padding: 20px;
+          background: white;
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+          margin-bottom: 12px;
+        }
+        .mobile-slide .stat-card-label {
+          font-size: 13px;
+          color: #999;
+        }
+        .mobile-slide .stat-card-number {
+          font-size: 48px;
+          font-weight: 700;
+          line-height: 1;
+          color: #111;
+          margin: 4px 0;
+        }
+        .mobile-slide .stat-card-number .accent {
+          color: var(--blue);
+        }
+        .mobile-slide .stat-card-sub {
+          font-size: 13px;
+          color: #999;
+          margin-top: 4px;
+        }
+
+        /* --- WAITLIST CTA --- */
+        #why-join {
+          padding: 6px;
+        }
+        .cta-card {
+          padding: 50px 20px;
+          min-height: auto;
+        }
+        .cta-headline {
+          font-size: clamp(24px, 7vw, 54px);
+        }
+        .cta-sub {
+          font-size: 15px;
+        }
+        .cta-form-wrap {
+          width: 100%;
+          flex-direction: column;
+          border-radius: 16px;
+          padding: 16px;
+          gap: 12px;
+        }
+        .cta-form-wrap input {
+          font-size: 16px;
+          width: 100%;
+        }
+        .cta-form-wrap .btn-waitlist-white {
+          width: 100%;
+          justify-content: center;
+          height: 52px;
+        }
+
+        /* --- FAQ --- */
+        #faq {
+          padding: 40px 20px;
+        }
+        .faq-layout {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .faq-card {
+          min-height: auto;
+          padding: 28px;
+        }
+        .faq-card-title {
+          font-size: 40px;
+        }
+        .faq-list-wrap {
+          padding: 8px 20px;
+          min-height: auto;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+          padding: 0 16px 0;
+        }
+        .footer-card {
+          padding: 32px 24px 28px;
+        }
+        .footer-top {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+        .footer-copyright {
+          text-align: left;
+          margin-top: 8px;
+        }
+        .footer-email-form {
+          width: 100%;
+        }
+        .footer-email-form input {
+          flex: 1;
+          min-width: 0;
+        }
+        .footer-watermark {
+          font-size: 18vw;
+          margin-top: -20px;
+        }
+      }
+
+      /* Very small screens */
+      @media (max-width: 400px) {
+        .hero-headline {
+          font-size: 46px;
+        }
+        .stats-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ===========================
+       TOAST NOTIFICATION
+       =========================== */
+      .toast {
+        position: fixed;
+        bottom: 32px;
+        right: 32px;
+        z-index: 9999;
+        background: #111;
+        color: white;
+        padding: 14px 22px;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 500;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        transform: translateY(100px);
+        opacity: 0;
+        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .toast.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .toast.success {
+        border-left: 4px solid var(--lime);
+      }
+      .toast.error {
+        border-left: 4px solid #ff6b6b;
+      }
+      .signup-success {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: rgba(5, 8, 10, 0.76);
+        backdrop-filter: blur(6px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.25s ease, visibility 0.25s ease;
+      }
+      .signup-success.show { opacity: 1; visibility: visible; }
+      .signup-success-card {
+        position: relative;
+        width: min(100%, 480px);
+        padding: 40px 32px 32px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 20px;
+        background: #111719;
+        color: #fff;
+        text-align: center;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+        transform: translateY(12px) scale(0.98);
+        transition: transform 0.25s ease;
+      }
+      .signup-success.show .signup-success-card { transform: translateY(0) scale(1); }
+      .signup-success-icon {
+        width: 58px;
+        height: 58px;
+        margin: 0 auto 20px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: rgba(203, 255, 0, 0.12);
+        color: var(--lime);
+        font-size: 30px;
+      }
+      .signup-success-card h2 { margin: 0 0 12px; font-size: 30px; }
+      .signup-success-card p { margin: 0 auto 22px; max-width: 370px; color: rgba(255,255,255,.72); line-height: 1.6; }
+      .signup-share-link {
+        display: block;
+        overflow: hidden;
+        margin-bottom: 12px;
+        padding: 12px 14px;
+        border: 1px solid rgba(255,255,255,.16);
+        border-radius: 10px;
+        color: var(--lime);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-decoration: none;
+      }
+      .signup-share-button, .signup-close {
+        min-height: 46px;
+        border: 0;
+        border-radius: 10px;
+        cursor: pointer;
+        font: inherit;
+      }
+      .signup-share-button { width: 100%; background: var(--lime); color: #111; font-weight: 700; }
+      .signup-close { position: absolute; top: 12px; right: 14px; width: 38px; background: transparent; color: rgba(255,255,255,.7); font-size: 25px; }
+      @media (max-width: 520px) {
+        .signup-success-card { padding: 36px 22px 24px; }
+        .signup-success-card h2 { font-size: 26px; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ================================
+     NAVBAR
+     ================================ -->
+    <nav class="navbar">
+      <div style="width: 236px">
+        <a href="#" class="nav-logo">
+          <img
+            src="logo-white.png"
+            alt="Athlio"
+            class="logo-white"
+            style="height: 28px; width: auto"
+          />
+          <img
+            src="logo-black.png"
+            alt="Athlio"
+            class="logo-black"
+            style="height: 28px; width: auto"
+          />
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#social-proof">Who are we?</a></li>
+        <li><a href="#the-app">The app</a></li>
+        <li><a href="#why-join">Why join?</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-primary" onclick="scrollToForm()">
+          Join waitlist
+        </button>
+        <a href="mailto:athlio.app25@gmail.com" class="btn-ghost">Talk to us</a>
+      </div>
+      <div
+        class="nav-hamburger"
+        onclick="openMobileMenu()"
+        aria-label="Open menu"
+      >
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+      <a href="#social-proof" onclick="closeMobileMenu()">Who are we?</a>
+      <a href="#the-app" onclick="closeMobileMenu()">The app</a>
+      <a href="#why-join" onclick="closeMobileMenu()">Why join?</a>
+      <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+      <a
+        href="#"
+        class="mobile-cta"
+        onclick="
+          closeMobileMenu();
+          scrollToForm();
+        "
+        >Join waitlist</a
+      >
+    </div>
+
+    <!-- ================================
+     HERO
+     ================================ -->
+    <section id="hero">
+      <div class="hero-card">
+        <div class="hero-bg">
+          <img src="hero-bg.png" alt="Football player" />
+        </div>
+
+        <div class="hero-content">
+          <h1 class="hero-headline">Get discovered<br />Not just seen</h1>
+          <p class="hero-desc">
+            Your talent deserves to be seen. Showcase your game and put yourself
+            in front of the clubs and scouts who can take you to the next level.
+          </p>
+          <form
+            class="hero-form-wrap"
+            id="hero-form"
+            onsubmit="submitEmail(event, 'hero')"
+          >
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email address..."
+              required
+            />
+            <button type="submit" class="btn-waitlist">
+              Join the waitlist
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
+                <path
+                  d="M9.35262 3.35262C9.15787 3.15787 8.84213 3.15787 8.64738 3.35262C8.45273 3.54727 8.45263 3.86283 8.64715 4.05762L12.085 7.5L2.5 7.5C2.22386 7.5 2 7.72386 2 8C2 8.27614 2.22386 8.5 2.5 8.5L12.085 8.5L8.64715 11.9424C8.45263 12.1372 8.45273 12.4527 8.64738 12.6474C8.84213 12.8421 9.15787 12.8421 9.35262 12.6474L14 8L9.35262 3.35262Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <div class="hero-trust">
+          <span>Free to join</span>
+          <div class="dot"></div>
+          <span>No commitment</span>
+          <div class="dot"></div>
+          <span>Be first when we launch</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================
+     SOCIAL PROOF
+     ================================ -->
+    <section id="social-proof">
+      <div class="stats-row">
+        <div class="stat-item reveal reveal-d1">
+          <div class="stat-number" data-count="2847">2,847</div>
+          <div class="stat-label">Players on the waitlist</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item reveal reveal-d2">
+          <div class="stat-number" data-count="190" data-suffix="+">
+            190<span class="accent">+</span>
+          </div>
+          <div class="stat-label">Leagues represented</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item reveal reveal-d3">
+          <div class="stat-number" data-count="320">320</div>
+          <div class="stat-label">
+            Scouts and clubs asking to be on Athlio
+          </div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item reveal reveal-d4">
+          <div class="stat-number">2026</div>
+          <div class="stat-label">Launching</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wia-section" aria-labelledby="wia-headline">
+      <div class="wia-layout">
+        <div class="wia-left">
+          <h2 class="wia-headline reveal-left" id="wia-headline">
+            The Home of<br />Football Ambition
+          </h2>
+          <p class="wia-desc reveal-left reveal-d1">
+            Football is about more than talent. It’s about being seen. Show how
+            far you’ve come, connect with the people who matter, and give your
+            potential a real chance to be noticed.
+          </p>
+          <div class="wia-cards reveal reveal-d2">
+            <div class="wia-card wia-card-lime">
+              <p class="wia-card-title">Track Your Progress</p>
+              <p class="wia-card-desc">
+                Monitor performance, goals, and development over time.
+              </p>
+            </div>
+            <div class="wia-card wia-card-navy">
+              <p class="wia-card-title">Connect With Others</p>
+              <p class="wia-card-desc">
+                Increase your visibility and reach the people who matter.
+              </p>
+            </div>
+            <div class="wia-card wia-card-blue">
+              <p class="wia-card-title">Get Noticed by Scouts</p>
+              <p class="wia-card-desc">
+                Build connections and unlock new career possibilities.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="wia-right reveal-right">
+          <img
+            class="wia-photo"
+            src="wia-player.png"
+            alt="Footballer sitting on the pitch with a ball"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================
+     SNEAK PEAK — STICKY SCROLL
+     ================================ -->
+    <section id="the-app">
+      <h2 class="sneak-title reveal">
+        Your career<br /><span class="accent">in your pocket</span>
+      </h2>
+
+      <!-- Mobile: 3 stacked slides (hidden on desktop) -->
+      <div class="mobile-slides" id="mobile-slides" style="display: none">
+        <!-- populated by JS -->
+      </div>
+
+      <div class="scroll-scene" id="scroll-scene">
+        <div class="sticky-row">
+          <!-- LEFT: changes per slide -->
+          <div class="slide-left" id="slide-left">
+            <div class="slide-num" id="slide-num">01</div>
+            <h3 class="slide-title" id="slide-title">
+              Your football story, backed by your coach.
+            </h3>
+            <p class="slide-desc" id="slide-desc">
+              Your position, your style, your highlights, all in one place. Get
+              your coach to back you up, so scouts know your game is the real
+              deal.
+            </p>
+            <div class="badges" id="slide-badges">
+              <span class="badge">Matches</span>
+              <span class="badge">Clubs</span>
+              <span class="badge">Posts</span>
+            </div>
+          </div>
+
+          <!-- CENTER: phone (always visible) -->
+          <div class="phone-wrapper">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <!-- Screen 1 — Profile -->
+                <div class="screen-content" id="screen-0">
+                  <img
+                    src="players_mockup.png"
+                    alt="Athlio player profile displayed in an iPhone mockup"
+                    style="
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                      object-position: center;
+                      display: block;
+                    "
+                  />
+                </div>
+
+                <!-- Screen 2 — Performance -->
+                <div class="screen-content hidden" id="screen-1">
+                  <img
+                    src="performance_mockup.png"
+                    alt="Athlio performance dashboard displayed in an iPhone mockup"
+                    style="
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                      object-position: center;
+                      display: block;
+                    "
+                  />
+                </div>
+
+                <!-- Screen 3 — Scout Search -->
+                <div class="screen-content hidden" id="screen-2">
+                  <img
+                    src="search_mockup.png"
+                    alt="Athlio player search displayed in an iPhone mockup"
+                    style="
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                      object-position: center;
+                      display: block;
+                    "
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: stats cards, change per slide -->
+          <div class="slide-right" id="slide-right">
+            <!-- populated by JS -->
+          </div>
+
+          <!-- Progress dots -->
+          <div class="slide-dots" id="slide-dots">
+            <div class="slide-dot active" onclick="goToSlide(0)"></div>
+            <div class="slide-dot" onclick="goToSlide(1)"></div>
+            <div class="slide-dot" onclick="goToSlide(2)"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================
+     WAITLIST CTA
+     ================================ -->
+    <section id="why-join">
+      <div class="cta-card">
+        <div class="cta-inner">
+          <h2 class="cta-headline reveal">
+            Your journey doesn’t wait.<br />Be first in.
+          </h2>
+          <p class="cta-sub reveal reveal-d2">
+            Athlio is coming soon. Join the waitlist and be among the first
+            athletes to build their profile when we launch.
+          </p>
+          <form
+            class="cta-form-wrap reveal reveal-d3"
+            id="cta-form"
+            onsubmit="submitEmail(event, 'cta')"
+          >
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email address..."
+              required
+            />
+            <button type="submit" class="btn-waitlist-white">
+              Join the waitlist
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
+                <path
+                  d="M9.35262 3.35262C9.15787 3.15787 8.84213 3.15787 8.64738 3.35262C8.45273 3.54727 8.45263 3.86283 8.64715 4.05762L12.085 7.5L2.5 7.5C2.22386 7.5 2 7.72386 2 8C2 8.27614 2.22386 8.5 2.5 8.5L12.085 8.5L8.64715 11.9424C8.45263 12.1372 8.45273 12.4527 8.64738 12.6474C8.84213 12.8421 9.15787 12.8421 9.35262 12.6474L14 8L9.35262 3.35262Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          </form>
+          <div class="cta-form-msg" id="cta-msg"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================
+     FAQ
+     ================================ -->
+    <section id="faq">
+      <div class="faq-layout">
+        <div class="faq-card reveal-left">
+          <div class="faq-tag">FAQ</div>
+          <h2 class="faq-card-title">Questions?<br />Answered.</h2>
+          <p class="faq-contact">
+            Can't find your answer? Email us at<br />
+            <a href="mailto:athlio.app25@gmail.com">athlio.app25@gmail.com</a>
+          </p>
+        </div>
+
+        <div class="faq-list-wrap reveal-right">
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>When will Athlio launch?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-answer">
+              We're targeting a 2026 launch. Waitlist members will get early
+              access before the public release and be the first to build their
+              profiles.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>Is Athlio free to use?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-answer">
+              Yes — joining the waitlist is completely free, with no commitment
+              required. We'll share pricing details closer to launch.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>Which sports does Athlio support?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-answer">
+              We're starting with football (soccer). More sports may be added
+              after launch based on user demand.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>What devices does Athlio integrate with?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-answer">
+              Athlio connects with Strava, Apple Health, and more — so your
+              fitness data flows in automatically alongside your match logs.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>I'm a coach. Is Athlio right for me?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-answer">
+              Coaches can verify their players' stats and profiles, adding an
+              extra layer of credibility that scouts trust. Coach accounts are
+              in the roadmap.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>How is my data handled?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-answer">
+              Your data is stored securely and never sold to third parties. You
+              control what's public on your profile and what stays private.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>What countries will it be available in?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-answer">
+              We're launching across Europe first, with a focus on markets with
+              strong grassroots football scenes. Global expansion will follow.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================
+     FOOTER
+     ================================ -->
+    <footer>
+      <div class="footer-card">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="#" class="footer-logo">
+              <img
+                src="logo-accent.png"
+                alt="Athlio"
+                style="height: 38px; width: auto"
+              />
+            </a>
+            <p class="footer-tagline">Every effort deserves to be seen</p>
+          </div>
+
+          <div class="footer-nav-group">
+            <div class="footer-nav-label">Navigation</div>
+            <ul class="footer-nav-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#social-proof">Who are we?</a></li>
+              <li><a href="#the-app">The app</a></li>
+              <li><a href="#why-join">Why join?</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-group">
+            <div class="footer-nav-label">Legal</div>
+            <ul class="footer-nav-links">
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Cookie Policy</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="footer-nav-label" style="margin-bottom: 16px">
+              Stay updated
+            </div>
+            <form
+              class="footer-email-form"
+              id="footer-form"
+              onsubmit="submitEmail(event, 'footer')"
+            >
+              <input
+                type="email"
+                name="email"
+                placeholder="Email address"
+                required
+              />
+              <button type="submit" class="btn-join">Join</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div style="display: flex; align-items: center; gap: 12px">
+            <span class="footer-social-label">Stay in touch:</span>
+            <div class="footer-social">
+              <a
+                href="https://www.instagram.com/athlio.app/?hl=uk"
+                class="social-btn"
+                aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg viewBox="0 0 24 24" fill="#111">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <p class="footer-copyright">
+            Copyright: Athlio 2025. All rights reserved.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-watermark">ATHLIO</div>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="signup-success" id="signup-success" aria-hidden="true">
+      <section class="signup-success-card" role="dialog" aria-modal="true" aria-labelledby="signup-success-title" aria-describedby="signup-success-copy">
+        <button class="signup-close" type="button" aria-label="Close" onclick="closeSignupSuccess()">×</button>
+        <div class="signup-success-icon" aria-hidden="true">✓</div>
+        <h2 id="signup-success-title">You're on the waitlist!</h2>
+        <p id="signup-success-copy">Thanks for signing up. We'll contact you when Athlio is ready. Share the link with your football friends so they can join too.</p>
+        <a class="signup-share-link" id="signup-share-link" href="#"></a>
+        <button class="signup-share-button" id="signup-share-button" type="button">Copy link to share</button>
+      </section>
+    </div>
+
+    <!-- ================================
+     SCRIPTS
+     ================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script>
+      /* =============================================
+       SUPABASE SETUP
+       ---------------------------------------------
+       1. Go to https://supabase.com and create a project
+       2. Run this SQL in the SQL editor:
+          create table waitlist (
+            id uuid default gen_random_uuid() primary key,
+            email text unique not null,
+            created_at timestamptz default now()
+          );
+          alter table waitlist enable row level security;
+          create policy "Allow insert" on waitlist for insert with check (true);
+       3. Replace the values below with your project URL and anon key
+          (found in Project Settings → API)
+       ============================================= */
+      const SUPABASE_URL = "https://xoirdakyzdanoxaciwvx.supabase.co";
+      const SUPABASE_ANON_KEY =
+        "sb_publishable_aNqFQeOmg1D8NNdxIAvWXw_mZLf6idL";
+
+      let supabaseClient = null;
+      try {
+        supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      } catch (e) {}
+
+      /* =============================================
+       EMAIL SUBMISSION
+       ============================================= */
+      async function submitEmail(e, source) {
+        e.preventDefault();
+        const form = e.target;
+        const emailInput = form.querySelector('input[type="email"]');
+        const email = emailInput.value.trim();
+        const btn = form.querySelector('button[type="submit"]');
+
+        if (!email) return;
+
+        const originalText = btn.textContent;
+        btn.textContent = "Joining...";
+        btn.disabled = true;
+
+        if (!supabaseClient || SUPABASE_URL === "YOUR_SUPABASE_URL") {
+          // Demo mode — no Supabase configured yet
+          setTimeout(() => {
+            showSignupSuccess();
+            emailInput.value = "";
+            btn.textContent = originalText;
+            btn.disabled = false;
+          }, 600);
+          return;
+        }
+
+        try {
+          const { error } = await supabaseClient
+            .from("waitlist")
+            .insert({ email, source });
+
+          if (error) {
+            if (error.code === "23505") {
+              showSignupSuccess("You're already on the waitlist!");
+            } else {
+              showToast("Something went wrong. Please try again.", "error");
+              console.error(error);
+            }
+          } else {
+            showSignupSuccess();
+            emailInput.value = "";
+          }
+        } catch (err) {
+          showToast("Something went wrong. Please try again.", "error");
+        } finally {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }
+      }
+
+      function showToast(msg, type = "success") {
+        const toast = document.getElementById("toast");
+        toast.textContent = msg;
+        toast.className = "toast " + type;
+        requestAnimationFrame(() => toast.classList.add("show"));
+        setTimeout(() => toast.classList.remove("show"), 4000);
+      }
+
+      function showSignupSuccess(title = "You're on the waitlist!") {
+        const modal = document.getElementById("signup-success");
+        const link = window.location.href.split("#")[0];
+        document.getElementById("signup-success-title").textContent = title;
+        const shareLink = document.getElementById("signup-share-link");
+        shareLink.href = link;
+        shareLink.textContent = link;
+        modal.classList.add("show");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        document.getElementById("signup-share-button").focus();
+      }
+
+      function closeSignupSuccess() {
+        const modal = document.getElementById("signup-success");
+        modal.classList.remove("show");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      document.getElementById("signup-share-button").addEventListener("click", async () => {
+        const link = document.getElementById("signup-share-link").href;
+        const button = document.getElementById("signup-share-button");
+        try {
+          await navigator.clipboard.writeText(link);
+          button.textContent = "Link copied! Share it with your friends";
+        } catch (err) {
+          window.prompt("Copy this link and share it with your football friends:", link);
+        }
+      });
+
+      document.getElementById("signup-success").addEventListener("click", (event) => {
+        if (event.target.id === "signup-success") closeSignupSuccess();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeSignupSuccess();
+      });
+
+      function scrollToForm() {
+        document
+          .getElementById("hero-form")
+          .querySelector("input")
+          .focus({ preventScroll: false });
+        document.getElementById("hero").scrollIntoView({ behavior: "smooth" });
+      }
+
+      /* =============================================
+       STICKY SCROLL — SNEAK PEAK
+       ============================================= */
+      const SLIDES = [
+        {
+          num: "01",
+          title: "Your football story, backed by your coach.",
+          desc: "Your position, your style, your highlights, all in one place. Get your coach to back you up, so scouts know your game is the real deal.",
+          badges: ["Matches", "Clubs", "Posts"],
+          right: `
+          <div class="stat-card">
+            <div class="stat-card-label">Average trust score</div>
+            <div class="stat-card-number">87<span class="accent">%</span></div>
+            <div class="stat-card-sub">given to verified profiles by beta scouts</div>
+          </div>
+        `,
+        },
+        {
+          num: "02",
+          title: "Track every season",
+          desc: "Log every match, track your goals and assists, and watch your stats build across seasons. Set personal targets, monitor your progress and always know where you stand compared to players at your level.",
+          badges: ["Teammates", "Progress", "Challenges"],
+          right: `
+          <div class="stat-card">
+            <div class="stat-card-label">Partners</div>
+            <div class="stat-card-number">5</div>
+            <div class="stat-card-sub">connect your Strava, Apple Health and more</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-label">Stats tracked</div>
+            <div class="stat-card-number">20<span class="accent">+</span></div>
+            <div class="stat-card-sub">everything in one place to progress</div>
+          </div>
+        `,
+        },
+        {
+          num: "03",
+          title: "BE found by scouts",
+          desc: "Scouts search Athlio by position, playing style, level, and region. When your profile is complete and verified, you show up. No connections needed, no luck involved.",
+          badges: ["Filters", "Verification", "Free Connections"],
+          right: `
+          <div class="stat-card">
+            <div class="stat-card-label">Future scouts in app</div>
+            <div class="stat-card-number">320<span class="accent">+</span></div>
+            <div class="stat-card-sub">estimated amount for the launch</div>
+          </div>
+        `,
+        },
+      ];
+
+      let currentSlide = 0;
+      let isTransitioning = false;
+
+      function updateSlide(index, force = false) {
+        if (index === currentSlide && !force) return;
+        currentSlide = index;
+
+        const slideLeft = document.getElementById("slide-left");
+        const slideRight = document.getElementById("slide-right");
+        const data = SLIDES[index];
+
+        // Update dots
+        document.querySelectorAll(".slide-dot").forEach((dot, i) => {
+          dot.classList.toggle("active", i === index);
+        });
+
+        // Fade out
+        slideLeft.style.opacity = "0";
+        slideLeft.style.transform = "translateY(10px)";
+        slideRight.style.opacity = "0";
+        slideRight.style.transform = "translateY(10px)";
+
+        // Update screens
+        for (let i = 0; i < 3; i++) {
+          const screen = document.getElementById("screen-" + i);
+          screen.classList.toggle("hidden", i !== index);
+        }
+
+        setTimeout(() => {
+          // Update content
+          document.getElementById("slide-num").textContent = data.num;
+          document.getElementById("slide-title").textContent = data.title;
+          document.getElementById("slide-desc").textContent = data.desc;
+          const badgesEl = document.getElementById("slide-badges");
+          badgesEl.innerHTML = data.badges
+            .map((b) => `<span class="badge">${b}</span>`)
+            .join("");
+          slideRight.innerHTML = data.right;
+
+          // Fade in
+          slideLeft.style.transition =
+            "opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
+          slideRight.style.transition =
+            "opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
+          slideLeft.style.opacity = "1";
+          slideLeft.style.transform = "translateY(0)";
+          slideRight.style.opacity = "1";
+          slideRight.style.transform = "translateY(0)";
+        }, 180);
+      }
+
+      function goToSlide(index) {
+        const scene = document.getElementById("scroll-scene");
+        const rect = scene.getBoundingClientRect();
+        const sectionTop = window.scrollY + rect.top;
+        const targetScroll =
+          sectionTop + (index / 3) * (scene.offsetHeight - window.innerHeight);
+        window.scrollTo({ top: targetScroll, behavior: "smooth" });
+      }
+
+      function handleScroll() {
+        const scene = document.getElementById("scroll-scene");
+        const rect = scene.getBoundingClientRect();
+        const scrollable = scene.offsetHeight - window.innerHeight;
+        if (scrollable <= 0) return;
+
+        const scrolled = -rect.top;
+        const progress = Math.max(0, Math.min(1, scrolled / scrollable));
+        const rawIndex = progress * 3;
+        const index = Math.min(2, Math.max(0, Math.floor(rawIndex)));
+
+        updateSlide(index);
+      }
+
+      // Initialize
+      updateSlide(0, true);
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      handleScroll();
+
+      /* =============================================
+       SCROLL REVEAL — IntersectionObserver
+       ============================================= */
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+
+      document
+        .querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale")
+        .forEach((el) => revealObserver.observe(el));
+
+      /* =============================================
+       COUNTER ANIMATION
+       ============================================= */
+      function animateCounter(el) {
+        const target = parseInt(el.dataset.count);
+        const suffix = el.dataset.suffix || "";
+        const accentEl = el.querySelector(".accent");
+        const accentHTML = accentEl ? accentEl.outerHTML : "";
+        const duration = 1400;
+        const start = performance.now();
+        const startVal = Math.max(0, target - Math.ceil(target * 0.6));
+
+        const update = (now) => {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease out cubic
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(startVal + (target - startVal) * eased);
+          const formatted = current.toLocaleString();
+          el.innerHTML =
+            formatted +
+            (accentEl
+              ? accentHTML
+              : suffix
+                ? `<span class="accent">${suffix}</span>`
+                : "");
+          if (progress < 1) requestAnimationFrame(update);
+        };
+        requestAnimationFrame(update);
+      }
+
+      const counterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.target.dataset.count) {
+              animateCounter(entry.target);
+              counterObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+
+      document
+        .querySelectorAll("[data-count]")
+        .forEach((el) => counterObserver.observe(el));
+
+      /* =============================================
+       NAVBAR — light/dark text based on section bg
+       ============================================= */
+      const navbar = document.querySelector(".navbar");
+
+      const navSections = [
+        { id: "hero", dark: true },
+        { id: "social-proof", dark: false },
+        { id: "the-app", dark: false },
+        { id: "why-join", dark: true },
+        { id: "faq", dark: false },
+      ];
+
+      function updateNavTheme() {
+        const hero = document.getElementById("hero");
+        const pastHero = hero
+          ? window.scrollY > hero.offsetHeight
+          : window.scrollY > 60;
+        navbar.classList.toggle("scrolled", pastHero);
+
+        const checkY = navbar.offsetHeight;
+        let isDark = true;
+        for (const { id, dark } of navSections) {
+          const el = document.getElementById(id);
+          if (!el) continue;
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= checkY && rect.bottom > checkY) {
+            isDark = dark;
+            break;
+          }
+        }
+        // footer is light
+        const footer = document.querySelector("footer");
+        if (footer) {
+          const rect = footer.getBoundingClientRect();
+          if (rect.top <= checkY && rect.bottom > checkY) isDark = false;
+        }
+        navbar.classList.toggle("light-bg", !isDark);
+      }
+
+      let previousScrollY = window.scrollY;
+      function updateNavbarVisibility() {
+        const currentScrollY = window.scrollY;
+        const menuOpen = document
+          .getElementById("mobile-menu")
+          ?.classList.contains("open");
+        if (
+          currentScrollY < 80 ||
+          currentScrollY < previousScrollY - 4 ||
+          menuOpen
+        ) {
+          navbar.classList.remove("nav-hidden");
+        } else if (currentScrollY > previousScrollY + 4) {
+          navbar.classList.add("nav-hidden");
+        }
+        previousScrollY = currentScrollY;
+      }
+
+      window.addEventListener("scroll", updateNavTheme, { passive: true });
+      window.addEventListener("scroll", updateNavbarVisibility, {
+        passive: true,
+      });
+      updateNavTheme();
+      updateNavbarVisibility();
+
+      /* =============================================
+       MOBILE MENU
+       ============================================= */
+      function openMobileMenu() {
+        navbar.classList.remove("nav-hidden");
+        document.getElementById("mobile-menu").classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function closeMobileMenu() {
+        document.getElementById("mobile-menu").classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      /* =============================================
+       MOBILE SLIDES — build stacked version
+       ============================================= */
+      function buildMobileSlides() {
+        const container = document.getElementById("mobile-slides");
+        if (!container) return;
+
+        const screenSrcs = [
+          "players_mockup.png",
+          "performance_mockup.png",
+          "search_mockup.png",
+        ];
+        const screensHTML = screenSrcs.map(
+          (src) =>
+            `<img src="${src}" alt="Athlio app in an iPhone mockup" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;">`,
+        );
+
+        container.innerHTML = SLIDES.map(
+          (slide, i) => `
+        <div class="mobile-slide">
+          <div class="slide-num">${slide.num}</div>
+          <h3 class="slide-title">${slide.title}</h3>
+          <p class="slide-desc">${slide.desc}</p>
+          <div class="badges">${slide.badges.map((b) => `<span class="badge">${b}</span>`).join("")}</div>
+          <div class="phone-wrapper">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div style="position:absolute;inset:0;overflow:hidden;">${screensHTML[i]}</div>
+              </div>
+            </div>
+          </div>
+          <div style="width:100%;padding-top:8px;">${slide.right}</div>
+        </div>
+      `,
+        ).join("");
+      }
+
+      buildMobileSlides();
+
+      /* =============================================
+       FAQ ACCORDION
+       ============================================= */
+      function toggleFaq(questionEl) {
+        const item = questionEl.parentElement;
+        const isOpen = item.classList.contains("open");
+
+        // Close all
+        document
+          .querySelectorAll(".faq-item.open")
+          .forEach((el) => el.classList.remove("open"));
+
+        // Toggle current
+        if (!isOpen) item.classList.add("open");
+      }
+    </script>
+  </body>
+</html>

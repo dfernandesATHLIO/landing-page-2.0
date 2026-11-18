@@ -1,0 +1,31 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --blue: #4051fd;
+  --navy: #0c0f31;
+  --lime: #a8ff00;
+  --white: #fff;
+  --gray-text: #cecfd4;
+  --bg: #fafafa;
+  --muted: #72717a;
+
+  --font-body: var(--font-barlow), sans-serif;
+  --font-display: var(--font-barlow-condensed), sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: #111;
+  overflow-x: hidden;
+}

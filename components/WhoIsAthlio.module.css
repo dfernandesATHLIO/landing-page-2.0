@@ -1,0 +1,159 @@
+.section {
+  background: var(--bg);
+  padding: 20px 1.5% 100px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: clamp(56px, 8vw, 130px);
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.headline {
+  margin-bottom: 20px;
+  color: #111;
+  font-family: var(--font-display);
+  font-size: clamp(52px, 5.2vw, 76px);
+  font-style: italic;
+  font-weight: 800;
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+
+.desc {
+  max-width: 620px;
+  margin-bottom: 32px;
+  color: #555;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.card {
+  min-height: clamp(220px, 22.8vw, 360px);
+  padding: clamp(20px, 1.5vw, 24px);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.lime {
+  background: #c9f58f;
+  color: #111;
+}
+.navy {
+  background: var(--navy);
+  color: white;
+}
+.blue {
+  background: var(--blue);
+  color: white;
+}
+
+.cardTitle {
+  max-width: 280px;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 1.8vw, 28px);
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.cardDesc {
+  max-width: 320px;
+  font-size: clamp(15px, 1.15vw, 18px);
+  font-weight: 500;
+  line-height: 1.28;
+}
+
+.right {
+  position: relative;
+  min-height: 460px;
+  aspect-ratio: 0.87;
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--navy);
+}
+
+.photo {
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 1100px) {
+  .section {
+    padding: 20px 60px 80px;
+  }
+  .layout {
+    gap: 32px;
+  }
+  .right {
+    min-height: 400px;
+  }
+  .cards {
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .card {
+    min-height: clamp(240px, 28vw, 320px);
+    padding: 20px;
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .right {
+    min-height: 0;
+    max-height: 420px;
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 88px 24px 64px;
+  }
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .headline {
+    font-size: clamp(42px, 12vw, 54px);
+  }
+  .desc {
+    margin-bottom: 24px;
+    font-size: 15px;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .card {
+    min-height: 200px;
+    padding: 20px;
+    border-radius: 16px;
+  }
+  .cardTitle {
+    font-size: 24px;
+  }
+  .cardDesc {
+    font-size: 17px;
+  }
+  .right {
+    border-radius: 18px;
+  }
+}

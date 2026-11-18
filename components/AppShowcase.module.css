@@ -1,0 +1,303 @@
+.section {
+  background: var(--bg);
+  padding-top: 80px;
+}
+
+.title {
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 72px;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: #111;
+  padding-bottom: 60px;
+}
+
+.accent {
+  color: var(--blue);
+}
+
+/* ---------- Sticky scroll scene ---------- */
+.scene {
+  position: relative;
+  height: 300vh; /* 3 panels */
+}
+
+.stickyRow {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 300px 1fr;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 88px 0;
+  overflow: hidden;
+}
+
+.fade {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fadeOut {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.slideLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.slideRight {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.slideNum {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 160px;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.07);
+  margin-bottom: -40px;
+}
+
+.slideTitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 32px;
+  text-transform: uppercase;
+  color: #111;
+  margin-bottom: 12px;
+}
+
+.slideDesc {
+  font-size: 16px;
+  font-weight: 400;
+  color: #555;
+  line-height: 1.55;
+  max-width: 360px;
+  margin-bottom: 20px;
+}
+
+.badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.badge {
+  display: inline-flex;
+  padding: 4px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  border-radius: 9999px;
+  background: #dbe9ff;
+  color: #1f2cb4;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.14px;
+  text-transform: uppercase;
+}
+
+/* Phone */
+.phoneWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phoneFrame {
+  width: 320px;
+  aspect-ratio: 1871 / 3866;
+  position: relative;
+}
+
+.phoneImg {
+  object-fit: contain;
+  object-position: center;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  transition:
+    opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.screenHidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.02);
+}
+
+/* Stat cards */
+.statCard {
+  background: white;
+  border: 1px solid #ebebeb;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.statCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+.statCardLabel {
+  font-size: 14px;
+  color: #111;
+  font-weight: 500;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+.statCardNumber {
+  font-size: 64px;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1;
+  color: #111;
+  margin: 4px 0;
+}
+.statCardSub {
+  font-size: 14px;
+  color: #999;
+  margin-top: 6px;
+  line-height: 1.3;
+}
+
+/* Progress dots */
+.dots {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #ddd;
+  transition:
+    background 0.3s,
+    height 0.3s;
+  cursor: pointer;
+}
+.dotActive {
+  background: var(--blue);
+  height: 20px;
+  border-radius: 3px;
+}
+
+/* ---------- Mobile stacked slides (hidden on desktop) ---------- */
+.mobileSlides {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .stickyRow {
+    padding: 0 40px;
+    grid-template-columns: 1fr 260px 1fr;
+  }
+  .slideNum {
+    font-size: 120px;
+  }
+  .phoneFrame {
+    width: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-top: 50px;
+  }
+  .title {
+    font-size: 44px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .scene {
+    display: none;
+  }
+  .mobileSlides {
+    display: block;
+  }
+
+  .mobileSlide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 24px 56px;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 56px;
+  }
+  .mobileSlide:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  .slideNum {
+    font-size: 90px;
+    margin-bottom: -12px;
+  }
+  .slideTitle {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  .slideDesc {
+    font-size: 14px;
+    max-width: 100%;
+    margin-bottom: 16px;
+  }
+  .mobileSlide .badges {
+    margin-bottom: 28px;
+  }
+  .mobileSlide .phoneWrapper {
+    margin-bottom: 24px;
+  }
+  .phoneFrame {
+    width: 220px;
+  }
+
+  .mobileStats {
+    width: 100%;
+    padding-top: 8px;
+  }
+  .mobileStats .statCard {
+    padding: 20px;
+    margin-bottom: 12px;
+  }
+  .mobileStats .statCardLabel {
+    font-size: 13px;
+    color: #999;
+  }
+  .mobileStats .statCardNumber {
+    font-size: 48px;
+  }
+  .mobileStats .statCardSub {
+    font-size: 13px;
+    margin-top: 4px;
+  }
+}

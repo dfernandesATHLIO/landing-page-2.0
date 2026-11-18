@@ -1,0 +1,149 @@
+.section {
+  background: var(--bg);
+  padding: 80px 140px;
+  margin-bottom: -1px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 358px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.card {
+  background: #d3f89b;
+  border-radius: 20px;
+  padding: 32px;
+  min-height: 236px;
+}
+.tag {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+.cardTitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 52px;
+  text-transform: uppercase;
+  line-height: 1;
+  color: #111;
+  margin-bottom: 20px;
+}
+.contact {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.55);
+  line-height: 1.5;
+}
+.contact a {
+  color: #111;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.list {
+  background: white;
+  border-radius: 20px;
+  padding: 16px;
+  min-height: 501px;
+}
+
+.item {
+  border-bottom: 1px solid #eee;
+  overflow: hidden;
+}
+.item:last-child {
+  border-bottom: none;
+}
+
+.question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 8px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: #111;
+  text-align: left;
+  gap: 16px;
+  user-select: none;
+  background: none;
+  border: none;
+  transition: color 0.2s;
+}
+.question:hover {
+  color: var(--blue);
+}
+
+.toggle {
+  width: 36px;
+  height: 36px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition:
+    background 0.2s,
+    transform 0.3s;
+  font-size: 20px;
+  color: #333;
+}
+.open .toggle {
+  background: var(--blue);
+  color: white;
+  transform: rotate(45deg);
+}
+
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.35s ease,
+    padding 0.35s ease;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.open .answer {
+  max-height: 300px;
+  padding-bottom: 16px;
+}
+
+@media (max-width: 1100px) {
+  .section {
+    padding: 60px 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 40px 20px;
+  }
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .card {
+    min-height: auto;
+    padding: 28px;
+  }
+  .cardTitle {
+    font-size: 40px;
+  }
+  .list {
+    padding: 8px 20px;
+    min-height: auto;
+  }
+}
